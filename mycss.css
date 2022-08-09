@@ -13,11 +13,12 @@ body {
   color: white;
   font-weight: bold;
 }
+
 .jumbotron img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: solid 2px #030303;
+  border: solid 2px #444343;
 }
 .jumbotron h1 {
   font-weight: bold;
@@ -55,49 +56,21 @@ section {
   padding-top: 5rem;
 }
 
-.fb {
-  height: 50px;
-  width: 50px;
-  background-image: url('img/link/fb_thum.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  display: inline-block;
-  text-indent: -9999px;
-  top: 1rem;
-  left: 0px;
+.box {
+  width: 500px;
+  background-color: white;
+  margin: 0;
+  padding: 20px;
+  border-radius: 5px;
 }
-.ig {
-  height: 50px;
-  width: 60px;
-  position: absolute;
-  background-image: url('img/link/ig_thum.png');
-  background-repeat: no-repeat;
+.sosial li {
   display: inline-block;
-  text-indent: -9999px;
-  left: 45px;
-  top: 1rem;
-}
-.linkedin {
-  height: 50px;
+  padding: 20px;
   width: 50px;
-  position: absolute;
-  background-image: url('img/link/linkedin_thum.png');
-  background-repeat: no-repeat;
-  display: inline-block;
-  text-indent: -9999px;
-  left: 105px;
-  top: 1rem;
-}
-.git {
   height: 50px;
-  width: 50px;
-  position: absolute;
-  background-image: url('img/link/git_thum.png');
-  background-repeat: no-repeat;
-  display: inline-block;
-  text-indent: -9999px;
-  left: 157px;
-  top: 1rem;
+  margin-right: 10px;
+  position: relative;
+  border-radius: 50%;
 }
 
 /* #about .container .row .col-md-4 {
