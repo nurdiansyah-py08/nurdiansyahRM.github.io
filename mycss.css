@@ -57,7 +57,7 @@ section {
 }
 
 .box {
-  width: 800px;
+  width: 100%;
   background-color: white;
   margin: 0;
   padding: 20px;
