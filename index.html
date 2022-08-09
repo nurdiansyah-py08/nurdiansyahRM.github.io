@@ -167,20 +167,29 @@
 
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show d-none my_alert" role="alert">
+              <strong>Terima kasih</strong> Pesan anda sudah diterima.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="Contact_form">
               <div class="mb-3">
                 <label for="Nama" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name">
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama_lengkap">
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email">
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="Email">
               </div>
               <div class="mb-3">
                 <label for="Pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="Pesan" rows="3"></textarea>
+                <textarea class="form-control" id="Pesan" rows="3" name="pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary btn-kirim">Submit</button>
+
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           
           </div>
@@ -202,6 +211,35 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+  </script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby5WivUN-_gBz9KzskErp3p0pLl1xPajhwPrDwJBqHEfdE4cRGjkb4oKRV67KvtxaldSw/exec'
+    const form = document.forms['Contact_form']
+    const btnkirim = document.querySelector('.btn-kirim')
+    const btnloading = document.querySelector('.btn-loading')
+    const myalert = document.querySelector('.my_alert')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      //ketika tombol submit diklik
+      //tampilkan tombol loading, hilangkan tombol kirim
+      btnloading.classList.toggle('d-none');
+      btnkirim.classList.toggle('d-none');
+      
+      
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          //tampilkan tombol kirim hilangkan tombol loading
+          btnloading.classList.toggle('d-none');
+          btnkirim.classList.toggle('d-none');
+          //tampilkan alert
+          myalert.classList.toggle('d-none');
+          //reset form
+          form.reset();
+          console.log('Success!', response)
+          
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
   </script>
   </body>
 </html>
